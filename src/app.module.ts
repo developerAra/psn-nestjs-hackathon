@@ -13,6 +13,7 @@ import { PrismaService } from './lib/prisma/prisma.service';
 import { AuthModule } from '@thallesp/nestjs-better-auth';
 import { auth } from './lib/auth/auth';
 import { UserModule } from './user/user.module';
+import { HackathonModule } from './module/hackathon/hackathon.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { UserModule } from './user/user.module';
       ],
     }),
     UserModule,
+    HackathonModule,
   ],
   controllers: [AppController],
   providers: [
