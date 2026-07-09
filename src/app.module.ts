@@ -9,9 +9,13 @@ import {
   shield,
 } from "@arcjet/nest";
 import { APP_GUARD } from "@nestjs/core";
+import { PrismaService } from './lib/prisma/prisma.service';
+import { AuthModule } from '@thallesp/nestjs-better-auth';
+import { auth } from './lib/auth/auth';
 
 @Module({
-imports: [
+  imports: [
+    AuthModule.forRoot({ auth }),
     ArcjetModule.forRoot({
       isGlobal: true,
       key: process.env.ARCJET_KEY!,
@@ -28,10 +32,11 @@ imports: [
   controllers: [AppController],
   providers: [
     AppService,
+    PrismaService,
     {
       provide: APP_GUARD,
       useClass: ArcjetGuard,
     },
   ],
 })
-export class AppModule {}
+export class AppModule { }
