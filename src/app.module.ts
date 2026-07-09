@@ -12,6 +12,7 @@ import { APP_GUARD } from "@nestjs/core";
 import { PrismaService } from './lib/prisma/prisma.service';
 import { AuthModule } from '@thallesp/nestjs-better-auth';
 import { auth } from './lib/auth/auth';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { auth } from './lib/auth/auth';
         }),
       ],
     }),
+    UserModule,
   ],
   controllers: [AppController],
   providers: [
